@@ -16,6 +16,15 @@
   padding-bottom: 50px;
 }
 
+input {
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  font-size: 1.25rem;
+  width: 90%;
+  margin-left: 5px;
+}
+
 .search-bar-container {
   padding-top: 20vh;
   width: 40%;

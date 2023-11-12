@@ -9,6 +9,7 @@ import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import './App.css';
+// import wp1_to_wp2 from './add1_to_add2';
 import Dropdown from './components/Dropdown'; 
 
 
@@ -44,6 +45,9 @@ const center = {
   
 function App() {
 
+  const [commentText1,setCommentText1] = useState("")
+  const [commentText2,setCommentText2] = useState("")
+
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyCSTk81W_0RaNyxBHF4GS65EbdveW7aCBU"
     
@@ -57,6 +61,12 @@ function App() {
     return <div>Loading Maps</div>;
 
   }
+  
+  const handleSubmit = (evt) => {
+        evt.preventDefault();
+        console.log(commentText1, commentText2);
+        // wp1_to_wp2(commentText1, commentText2);
+    } 
 
   return (
     <div className="App">
@@ -90,9 +100,11 @@ function App() {
                 borderRadius: 1,
                 bgcolor: '#6adeeb',
                 textAlign: 'center',
-                paddingTop: 3
+                paddingTop: 3,
           }}>
-          <SearchBar/>
+          <input value = {commentText1}
+                     onChange={e => 
+                      setCommentText1(e.target.value)}/>
         </Box>
         </div>
         <div style={{  
@@ -108,7 +120,10 @@ function App() {
                 textAlign: 'center',
                 paddingTop: 3
           }}>
-          <SearchBar/>
+          <input value = {commentText2}
+                     onChange={e => {
+                      setCommentText2(e.target.value);
+                     } }/>
         </Box>
         </div>
       <div style={{  
@@ -151,7 +166,7 @@ function App() {
                 paddingTop: 3
           }}>
           <ButtonGroup size="large" variant="contained" aria-label="outlined primary button group">
-          <Button>Submit</Button>
+          <Button onClick={handleSubmit}>Submit</Button>
          </ButtonGroup>
         </Box>
         <div style={{  
