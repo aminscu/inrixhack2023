@@ -146,7 +146,7 @@ function App() {
         </div>
         <div style={{  
             marginLeft: '50px',
-            marginTop: '50px',
+            marginTop: '8px',
             marginBottom: '50px',
         }}>
         <Box sx={{
@@ -162,7 +162,7 @@ function App() {
          </ButtonGroup>
         </Box>
         <div style={{  
-            marginTop: '10px'
+            marginTop: '15px'
         }}>
         <Box sx={{
                 width: 400,
