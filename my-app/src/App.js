@@ -157,6 +157,7 @@ function App() {
                 borderRadius: 1,
                 bgcolor: '#6adeeb',
                 textAlign: 'center',
+                textAlign: 'start',
                 paddingTop: 3
           }}>
           <Dropdown title="Select route" items={items}/>
