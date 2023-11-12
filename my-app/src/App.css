@@ -1,4 +1,28 @@
+input {
+  background-color: transparent;
+  height: 100%;
+  font-size: 1.25rem;
+  width: 90%;
+  margin-left: 5px;
+}
 
+.input-wrapper {
+  border-radius: 10px;
+  height: 2.5rem;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+}
+.radius {
+  border-radius: 10px;
+  height: 2.5rem;
+  padding-top: 10px;
+  padding-left: 15px;
+  display: flex;
+  align-items: center;
+  border: none;
+}
 
 .App-logo {
   height: 40vmin;
@@ -16,14 +40,6 @@
   padding-bottom: 50px;
 }
 
-input {
-  background-color: transparent;
-  border: none;
-  height: 100%;
-  font-size: 1.25rem;
-  width: 90%;
-  margin-left: 5px;
-}
 
 .search-bar-container {
   padding-top: 20vh;

@@ -9,7 +9,7 @@ import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import './App.css';
-// import wp1_to_wp2 from './add1_to_add2';
+import main from './inrix_route.py';
 import Dropdown from './components/Dropdown'; 
 
 
@@ -47,6 +47,7 @@ function App() {
 
   const [commentText1,setCommentText1] = useState("")
   const [commentText2,setCommentText2] = useState("")
+  const [commentText3,setCommentText3] = useState("")
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyCSTk81W_0RaNyxBHF4GS65EbdveW7aCBU"
@@ -64,8 +65,8 @@ function App() {
   
   const handleSubmit = (evt) => {
         evt.preventDefault();
-        console.log(commentText1, commentText2);
-        // wp1_to_wp2(commentText1, commentText2);
+        console.log(commentText1, commentText2, commentText3);
+        main(commentText1, commentText2);
     } 
 
   return (
@@ -102,9 +103,12 @@ function App() {
                 textAlign: 'center',
                 paddingTop: 3,
           }}>
-          <input value = {commentText1}
-                     onChange={e => 
-                      setCommentText1(e.target.value)}/>
+          <div className="input-wrapper">
+            <input placeholder="Type to Search..." value = {commentText2}
+                     onChange={e => {
+                      setCommentText2(e.target.value);
+                     } }/>
+            </div>
         </Box>
         </div>
         <div style={{  
@@ -120,10 +124,12 @@ function App() {
                 textAlign: 'center',
                 paddingTop: 3
           }}>
-          <input value = {commentText2}
+          <div className="input-wrapper">
+            <input placeholder="Type to Search..." value = {commentText2}
                      onChange={e => {
                       setCommentText2(e.target.value);
                      } }/>
+            </div>
         </Box>
         </div>
       <div style={{  
@@ -138,18 +144,12 @@ function App() {
               paddingTop: 1
         }}> 
                 Options
-                <br></br>
-                <FormControl>
-                  <RadioGroup
-                    row
-                    aria-labelledby="demo-row-radio-buttons-group-label"
-                    name="row-radio-buttons-group"
-                  >
-                    <FormControlLabel value="female" control={<Radio />} label="Walk" />
-                    <FormControlLabel value="male" control={<Radio />} label="Drive" />
-                    <NumberBox/>
-                  </RadioGroup>
-                </FormControl>
+                <div className="radius">
+                  <input placeholder="Radius" value = {commentText2}
+                     onChange={e => {
+                      setCommentText2(e.target.value);
+                     } }/>
+            </div>
             </Box> 
         </div>
         <div style={{  
