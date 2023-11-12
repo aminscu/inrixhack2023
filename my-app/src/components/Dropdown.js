@@ -38,7 +38,6 @@ function Dropdown({title, items = [], multiSelect = false}){
             onKeyPress={() => toggle(!open)} 
             onClick={() => toggle(!open)}>
                 <div className="dd-header_title">
-                    <p className="dd-header_title--bold">{title}</p>
                     <p className="dd-header_title--bold"><b>{title}</b></p>
                 </div>
                 <div className="dd-header__action">
@@ -51,7 +50,7 @@ function Dropdown({title, items = [], multiSelect = false}){
                         <li className="dd-list-item" key={item.id}>
                             <buttone type="button" onClick={() => handleOnClick(item)}>
                                 <span>{item.value}</span>
-                                <span>{isItemInSelection(item) && <b>    Selected</b>}</span>
+                                <span>{isItemInSelection(item) && <b> Selected</b>}</span>
                             </buttone>
                         </li>
                     ))}
