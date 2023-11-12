@@ -17,6 +17,22 @@ import React, {useState, useEffect} from "react";
 import { SearchBar } from "./components/SearchBar";
 import { Options } from './components/Options';
 import { NumberBox } from "./components/NumberBox";
+
+const items = [
+  {
+    id: 1,
+    value: 'Route 1',
+  },
+  {
+    id: 2,
+    value: 'Route 2',
+  },
+  {
+    id: 3,
+    value: 'Route 3',
+  },
+];
+
 function App() {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
