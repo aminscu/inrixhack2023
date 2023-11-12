@@ -35,6 +35,7 @@ function App() {
   const [commentText1,setCommentText1] = useState("")
   const [commentText2,setCommentText2] = useState("")
   const [commentText3,setCommentText3] = useState("")
+  const [geo, setGeo] = useState([]);
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyCSTk81W_0RaNyxBHF4GS65EbdveW7aCBU"
@@ -47,13 +48,40 @@ function App() {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({value1: "test1", value2: "test2"})
+      body: JSON.stringify({value1: commentText1, value2: commentText2})
     }).then((res) => res.json()).then((data) => {
       console.log(data);
       // setItems([...items, {id: ++index, value: "Route " +index}]);
     });
   }, []);
 
+  useEffect(() => {
+    fetch("http://localhost:1234/geo-guesser", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({value1: commentText1, value2: commentText2})
+    }).then((res) => res.json()).then((geo) => {
+      console.log(geo);
+      setGeo(geo); 
+    });
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:1234/call-inrix", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({value1: geo[0], value2: geo[1], value3: geo[2], value4: geo[3]})
+    }).then((res) => res.json()).then((items) => {
+      console.log(items);
+      setItems(items); 
+    });
+  }, []);
+
+  
   if (loadError) {
     return <div> Error Loading Maps</div>;
   }

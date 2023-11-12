@@ -19,7 +19,7 @@ def main_flask():
 @app.route("/geo-guesser", methods=['POST'])
 def geo_guesser_flask():
     body = request.json
-    return google_geocoder(body[0], body[1])
+    return google_geocoder(body["value1"], body["value2"])
 
 @app.route("/call-inrix", methods=['POST'])
 def call_inrix_flask():
