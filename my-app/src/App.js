@@ -1,5 +1,4 @@
-import {GoogleMap, useJsApiLoader} from '@react-google-maps/api';
-
+import {GoogleMap, useLoadScript, Marker} from '@react-google-maps/api';
 import logo from './logo.svg';
 import {Box} from '@mui/system';
 import Radio from '@mui/material/Radio';
@@ -10,9 +9,12 @@ import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import './App.css';
+<<<<<<< Updated upstream
 import Dropdown from './components/Dropdown'; 
 
 
+=======
+>>>>>>> Stashed changes
 import React, {useState, useEffect} from "react";
 import { SearchBar } from "./components/SearchBar";
 import { Options } from './components/Options';
@@ -39,29 +41,32 @@ const containerStyle = {
 };
 
 const center = {
+<<<<<<< Updated upstream
   lat: 37.34885,
   lng: -121.948505
 };
 
+=======
+  lat: 37.7749,
+  lng: -122.4194
+};
+  
+>>>>>>> Stashed changes
 function App() {
-  const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
+
+  const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyCSTk81W_0RaNyxBHF4GS65EbdveW7aCBU"
-  })
+    
+  });
 
-  const [map, setMap] = React.useState(null)
+  if (loadError) {
+    return <div> Error Loading Maps</div>;
+  }
 
-  const onLoad = React.useCallback(function callback(map) {
-    // This is just an example of getting and using the map instance!!! don't just blindly copy!
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
+  if(!isLoaded) {
+    return <div>Loading Maps</div>;
 
-    setMap(map)
-  }, [])
-
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null)
-  }, [])
+  }
 
   return (
     <div className="App">
@@ -78,13 +83,11 @@ function App() {
                 paddingTop: 3,
                 marginLeft: 65
           }}>
-        <GoogleMap
-          mapContainerStyle={containerStyle}
-          center={center}
-          zoom={10}
-          onLoad={onLoad}
-          onUnmount={onUnmount}
-        ></GoogleMap>
+          <GoogleMap
+            mapContainerStyle={containerStyle}
+            center={center}
+            zoom={13}
+          ></GoogleMap>
         </Box>
         </div>
       <div style={{  
@@ -178,6 +181,8 @@ function App() {
         </div>
     </div>
   );
+
+  
 }
 
-export default React.memo(App);
+export default App;
