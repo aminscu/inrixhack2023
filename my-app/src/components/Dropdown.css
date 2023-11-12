@@ -19,22 +19,16 @@
 .dd-list.button {
     display: flex;
     justify-content: space-between;
-    background-color: white;
     font-size: 16px;
     padding: 10px 10px 30px 30px;
     border: 0;
-    border-bottom: 1px solid #ccc;
     width: 100%;
     text-align: left;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
 }
 
 .dd-list {
-    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
     padding: 20;
     margin: 0;
     width: 100%;
-    margin-top: 2px;
-
+    margin-top: 1px;
   }
