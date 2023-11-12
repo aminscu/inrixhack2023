@@ -9,12 +9,9 @@ import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import './App.css';
-<<<<<<< Updated upstream
 import Dropdown from './components/Dropdown'; 
 
 
-=======
->>>>>>> Stashed changes
 import React, {useState, useEffect} from "react";
 import { SearchBar } from "./components/SearchBar";
 import { Options } from './components/Options';
@@ -41,17 +38,10 @@ const containerStyle = {
 };
 
 const center = {
-<<<<<<< Updated upstream
-  lat: 37.34885,
-  lng: -121.948505
-};
-
-=======
   lat: 37.7749,
   lng: -122.4194
 };
   
->>>>>>> Stashed changes
 function App() {
 
   const { isLoaded, loadError } = useLoadScript({
@@ -175,7 +165,7 @@ function App() {
                 textAlign: 'start',
                 paddingTop: -3
           }}>
-          <Dropdown title="Select Route" items={items}/>
+          <Dropdown title="Select Routes" items={items}/>
         </Box>
         </div>
         </div>
