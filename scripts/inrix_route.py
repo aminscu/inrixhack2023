@@ -1,7 +1,7 @@
 import requests
 import token_update
 
-def wp1_to_wp2(add1, add2):
+def google_geocoder(add1, add2):
 
     url = "https://maps.googleapis.com/maps/api/geocode/json"
 
@@ -44,7 +44,7 @@ def call_inrix(wp_1, wp_2):
   return response
 
 def main(address1, address2):
-   result = wp1_to_wp2(address1, address2)
+   result = google_geocoder(address1, address2)
    response = call_inrix(result[0], result[1])
    print(response.json())
    
