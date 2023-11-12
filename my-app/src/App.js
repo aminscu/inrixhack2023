@@ -104,9 +104,9 @@ function App() {
                 paddingTop: 3,
           }}>
           <div className="input-wrapper">
-            <input placeholder="Type to Search..." value = {commentText2}
+            <input placeholder="Type to Search..." value = {commentText1}
                      onChange={e => {
-                      setCommentText2(e.target.value);
+                      setCommentText1(e.target.value);
                      } }/>
             </div>
         </Box>
@@ -145,9 +145,9 @@ function App() {
         }}> 
                 Options
                 <div className="radius">
-                  <input placeholder="Radius" value = {commentText2}
+                  <input placeholder="Radius" value = {commentText3}
                      onChange={e => {
-                      setCommentText2(e.target.value);
+                      setCommentText3(e.target.value);
                      } }/>
             </div>
             </Box> 
