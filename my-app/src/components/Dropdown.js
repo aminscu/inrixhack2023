@@ -48,10 +48,10 @@ function Dropdown({title, items = [], multiSelect = false}){
                 <ul className="dd-list">
                     {items.map(item => (
                         <li className="dd-list-item" key={item.id}>
-                            <buttone type="button" onClick={() => handleOnClick(item)}>
+                            <button type="button" onClick={() => handleOnClick(item)}>
                                 <span>{item.value}</span>
                                 <span>{isItemInSelection(item) && <b> Selected</b>}</span>
-                            </buttone>
+                            </button>
                         </li>
                     ))}
                 </ul>
