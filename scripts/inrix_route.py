@@ -23,9 +23,9 @@ def google_geocoder(add1, add2):
     response = requests.request("GET", url, params=payload)
     add2_geo = response.json()["results"][0]["geometry"]["location"]
 
-    return([str(add1_geo['lat']) + ", " + str(add1_geo['lng']), str(add2_geo['lat']) + ", " + str(add2_geo['lng'])])
+    return([str(add1_geo['lat']), str(add1_geo['lng']), str(add2_geo['lat']), str(add2_geo['lng'])])
 
-def call_inrix(wp_1, wp_2):
+def call_inrix(wp_1, wp_2, wp_3, wp_4):
   tok = token_update.check()
   url = "https://api.iq.inrix.com/findRoute"
   headers = {
@@ -33,8 +33,8 @@ def call_inrix(wp_1, wp_2):
   }
 
   payload = {
-      "wp_1":wp_1,
-      "wp_2":wp_2,
+      "wp_1": wp_1 + ", " + wp_2,
+      "wp_2": wp_3 + ", " + wp_4,
       "format":"json",
       "routeOutputFields": "P",
       "maxAlternates": 2
@@ -44,14 +44,23 @@ def call_inrix(wp_1, wp_2):
   return response
 
 def main(address1, address2):
-   result = google_geocoder(address1, address2)
-   response = call_inrix(result[0], result[1])
-   print(response.json())
+  count = 0
+  route_dict = {}
+
+  result = google_geocoder(address1, address2)
+  response = call_inrix(result[0], result[1], result[2], result[3])
+  for route in response.json()['result']['trip']['routes']:
+      route_dict[count] = route['points']['coordinates']
+      count += 1
+    
+  print(route_dict)
+  return route_dict
+
    
-  
 
 
 if __name__ == "__main__":
    main("900 North Point St F301, San Francisco, CA", "Presidio of San Francisco, San Francisco, CA")
+   #test
    
 
