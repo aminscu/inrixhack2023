@@ -18,20 +18,7 @@ import { SearchBar } from "./components/SearchBar";
 import { Options } from './components/Options';
 import { NumberBox } from "./components/NumberBox";
 
-const items = [
-  {
-    id: 1,
-    value: 'Route 1',
-  },
-  {
-    id: 2,
-    value: 'Route 2',
-  },
-  {
-    id: 3,
-    value: 'Route 3',
-  },
-];
+let index = 0; 
 
 const containerStyle = {
   width: '690px',
@@ -44,7 +31,7 @@ const center = {
 };
   
 function App() {
-
+  const [items, setItems] = useState([]);
   const [commentText1,setCommentText1] = useState("")
   const [commentText2,setCommentText2] = useState("")
   const [commentText3,setCommentText3] = useState("")
@@ -53,6 +40,19 @@ function App() {
     googleMapsApiKey: "AIzaSyCSTk81W_0RaNyxBHF4GS65EbdveW7aCBU"
     
   });
+
+  useEffect(() => {
+    fetch("http://localhost:1234/main", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({value1: "test1", value2: "test2"})
+    }).then((res) => res.json()).then((data) => {
+      console.log(data);
+      // setItems([...items, {id: ++index, value: "Route " +index}]);
+    });
+  }, []);
 
   if (loadError) {
     return <div> Error Loading Maps</div>;
