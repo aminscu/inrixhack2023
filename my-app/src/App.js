@@ -8,15 +8,33 @@ import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import './App.css';
+import Dropdown from './components/Dropdown'; 
 
 
 import React, {useState, useEffect} from "react"
 import { SearchBar } from "./components/SearchBar";
 import { Options } from './components/Options';
 import { NumberBox } from "./components/NumberBox";
+
+const items = [
+  {
+    id: 1,
+    value: 'Route 1',
+  },
+  {
+    id: 2,
+    value: 'Route 2',
+  },
+  {
+    id: 3,
+    value: 'Route 3',
+  },
+];
+
+
 function App() {
   return (
-    <div className="App">
+    <div className="App"> 
       <div style={{  
             marginLeft: '50px',
             marginTop: '50px'
@@ -90,6 +108,16 @@ function App() {
           <ButtonGroup size="large" variant="contained" aria-label="outlined primary button group">
           <Button>Submit</Button>
          </ButtonGroup>
+        </Box>
+        <Box sx={{
+                width: 500,
+                height: 100,
+                borderRadius: 1,
+                bgcolor: '#6adeeb',
+                textAlign: 'center',
+                paddingTop: 3
+          }}>
+          <Dropdown title="Select route" items={items}/>
         </Box>
         </div>
         
