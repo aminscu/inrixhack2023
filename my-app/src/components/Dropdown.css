@@ -1,6 +1,6 @@
 .dd-wrapper {
     display: flex;
-    min-height: 30px;
+    min-height: 25px;
     flex-wrap: wrap;
 }
 
