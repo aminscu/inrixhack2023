@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import './App.css';
 import main from './inrix_route.py';
-import Dropdown from './components/Dropdown'; 
+//import Dropdown from './components/Dropdown'; 
 
 
 import React, {useState, useEffect} from "react";
@@ -36,28 +36,31 @@ function App() {
   const [commentText2,setCommentText2] = useState("")
   const [commentText3,setCommentText3] = useState("")
   const [geo, setGeo] = useState([]);
+  const [coor, setCoor] = useState([]);
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyCSTk81W_0RaNyxBHF4GS65EbdveW7aCBU"
     
   });
 
-  useEffect(() => {
+  function callMain() {
     fetch("http://localhost:1234/main", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({value1: commentText1, value2: commentText2})
-    }).then((res) => res.json()).then((data) => {
-      console.log(data);
+    }).then((res) => res.json()).then((items) => {
+      console.log(items);
+      setItems(items);
       // setItems([...items, {id: ++index, value: "Route " +index}]);
     });
-  }, []);
+  }
 
-  useEffect(() => {
+  function callGeo() {
     fetch("http://localhost:1234/geo-guesser", {
-      method: "POST",
+      method: "POST", 
+
       headers: {
         "Content-Type": "application/json"
       },
@@ -66,20 +69,20 @@ function App() {
       console.log(geo);
       setGeo(geo); 
     });
-  }, []);
+  }
 
-  useEffect(() => {
+  function callInrix() {
     fetch("http://localhost:1234/call-inrix", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({value1: geo[0], value2: geo[1], value3: geo[2], value4: geo[3]})
-    }).then((res) => res.json()).then((items) => {
-      console.log(items);
-      setItems(items); 
+    }).then((res) => res.json()).then((coor) => {
+      console.log(coor);
+      setCoor(coor); 
     });
-  }, []);
+  }
 
   
   if (loadError) {
@@ -94,7 +97,9 @@ function App() {
   const handleSubmit = (evt) => {
         evt.preventDefault();
         console.log(commentText1, commentText2, commentText3);
-        main(commentText1, commentText2);
+        callMain();
+        callGeo();
+        callInrix();
     } 
 
   return (
@@ -200,7 +205,7 @@ function App() {
         <div style={{  
             marginTop: '15px'
         }}>
-        <Box sx={{
+        {/* <Box sx={{
                 width: 400,
                 height: 150,
                 borderRadius: 1,
@@ -209,7 +214,7 @@ function App() {
                 paddingTop: -3
           }}>
           <Dropdown title="Select Routes" items={items}/>
-        </Box>
+        </Box> */}
         </div>
         </div>
     </div>

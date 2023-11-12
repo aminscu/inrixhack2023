@@ -12,6 +12,7 @@ def google_geocoder(add1, add2):
         }
 
     response = requests.request("GET", url, params=payload)
+    print(response.json())
     add1_geo = response.json()["results"][0]["geometry"]["location"]
     
     payload = {
@@ -21,6 +22,7 @@ def google_geocoder(add1, add2):
         }
 
     response = requests.request("GET", url, params=payload)
+    print(response.json())
     add2_geo = response.json()["results"][0]["geometry"]["location"]
 
     return([str(add1_geo['lat']), str(add1_geo['lng']), str(add2_geo['lat']), str(add2_geo['lng'])])

@@ -1,6 +1,7 @@
 from flask import Flask, request;
 from flask_cors import CORS, cross_origin;
-from inrix_route import google_geocoder, call_inrix, main; 
+from inrix_route import google_geocoder, call_inrix, main;
+from inrix_route import main, google_geocoder, call_inrix; 
 
 app = Flask(__name__)
 CORS(app)
