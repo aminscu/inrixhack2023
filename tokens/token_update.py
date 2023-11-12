@@ -9,6 +9,9 @@ payload = {"appId": appId, "hashToken": hashToken}
 
 response = requests.request("GET", url, params=payload)
 
-with open("cur_key.txt", "w") as f1:
-    f1.write(response.json()["result"]["token"])
+
+def write_token():
+    with open("cur_token.txt", "w") as f1:
+        f1.write(response.json()["result"]["token"])
+        return response.json()["result"]["token"]
 
