@@ -33,6 +33,16 @@ const items = [
   },
 ];
 
+const containerStyle = {
+  width: '690px',
+  height: '690px'
+};
+
+const center = {
+  lat: 37.34885,
+  lng: -121.948505
+};
+
 function App() {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -151,17 +161,20 @@ function App() {
           <Button>Submit</Button>
          </ButtonGroup>
         </Box>
+        <div style={{  
+            marginTop: '10px'
+        }}>
         <Box sx={{
-                width: 500,
-                height: 100,
+                width: 400,
+                height: 150,
                 borderRadius: 1,
                 bgcolor: '#6adeeb',
-                textAlign: 'center',
                 textAlign: 'start',
-                paddingTop: 3
+                paddingTop: -3
           }}>
-          <Dropdown title="Select route" items={items}/>
+          <Dropdown title="Select Route" items={items}/>
         </Box>
+        </div>
         </div>
     </div>
   );
